@@ -14,10 +14,20 @@ int main()
     unsigned long lastSample = 0;
     int i = 0;
 
-    PIDMode mode = MANUAL;
-    PIDDirection direction = DIRECT;
 
-    PIDControl::PIDControl(1.0, 1.0, 1.0, 5, 0, 100, mode, direction);
+    // having trouble getting this to compile when PIDMode and PIDDirection are passed into PIDControl
+    /* Error: 
+    g++ alss.o pid_controller.o -o alss -lboost_system
+    Undefined symbols for architecture x86_64:
+    "PIDControl::PIDControl(float, float, float, float, float, float, PIDMode, PIDDirection)", referenced from:
+        _main in alss.o
+    ld: symbol(s) not found for architecture x86_64
+    */
+
+    //PIDMode mode = MANUAL;
+    //PIDDirection direction = DIRECT;
+
+    //PIDControl::PIDControl(1.0, 1.0, 1.0, 5, 0, 100, mode, direction);
 
     while (i < 2000) {
         unsigned long now = millis();
